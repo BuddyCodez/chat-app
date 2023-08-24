@@ -13,6 +13,9 @@ export default function Contacts({ contacts, changeChat }) {
     setCurrentUserName(data.username);
     setCurrentUserImage(data.avatarImage);
   }, []);
+  useEffect(() => {
+    console.log("Contact =>", contacts);
+  }, [contacts])
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
@@ -20,19 +23,18 @@ export default function Contacts({ contacts, changeChat }) {
   return (
     <>
       {currentUserImage && currentUserImage && (
-        <Container>
+        <Container className="containerContact">
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h3>snappy</h3>
+            <h3>SwiftChat</h3>
           </div>
           <div className="contacts">
             {contacts.map((contact, index) => {
               return (
                 <div
                   key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
+                  className={`contact ${index === currentSelected ? "selected" : ""
+                    }`}
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="avatar">

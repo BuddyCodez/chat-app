@@ -48,6 +48,12 @@ export default function Chat() {
   return (
     <>
       <Container>
+        <div className="menu">
+          <i className="fa-solid fa-bars" onClick={() => {
+            document.querySelector(".containerContact").classList.toggle("active");
+            !document.querySelector(".containerContact").classList.contains("active") && document.querySelector(".containerContact").classList.toggle("animateLeft");
+          }}></i>
+        </div>
         <div className="container">
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
@@ -76,6 +82,14 @@ const Container = styled.div`
     background-color: #00000076;
     display: grid;
     grid-template-columns: 25% 75%;
+    @media screen and (min-width: 100px) and (max-width: 720px) {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+  }
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
